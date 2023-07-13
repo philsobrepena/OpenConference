@@ -1,5 +1,7 @@
 window.addEventListener('DOMContentLoaded', async () => {
 
+
+
     function createCard(name, description, pictureUrl, starts, ends, location) {
         return `
           <div class="card">
@@ -13,16 +15,6 @@ window.addEventListener('DOMContentLoaded', async () => {
           </div>
         `;
       }
-    // function renderConferenceCards(conferences){
-    //     const columns = document.querySelectorAll('.col');
-
-    //     conferences.forEach(conference, idx) => {
-    //         const card = renderConferenceCardHtml(conference);
-    //         const cardCol = idx % 3
-
-    //         columns[cardCol].innerHTML += card;
-    //     }
-    // }
 
     const url = 'http://localhost:8000/api/conferences/';
 
@@ -30,7 +22,9 @@ window.addEventListener('DOMContentLoaded', async () => {
       const response = await fetch(url);
 
       if (!response.ok) {
+
         console.log('bad response')
+
       } else {
         const data = await response.json();
 

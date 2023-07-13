@@ -96,6 +96,29 @@ def api_list_conferences(request):
             safe=False,
         )
 
+@require_http_methods(["GET"])
+def api_list_states(request):
+    # Get the states from the database ordered by name
+    states = State.objects.order_by('name')
+
+    # Create an empty list named state_list
+    state_list = []
+
+    # For each state in the states from the database
+    for state in states:
+        # Create a dictionary that contains the name and
+        # abbreviation for each state
+        statedata = {
+            'name': state.name,
+            'abbreviation': state.abbreviation,
+        }
+
+        state_list.append(statedata)
+
+        # Append the dictionary to the list
+
+    return JsonResponse({"states": state_list})
+
 @require_http_methods(["GET", "PUT", "DELETE"])
 def api_show_conference(request, pk):
     """
